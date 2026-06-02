@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calistênicos Nexus - RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="profile-header">
+            <div class="avatar-container">
+                <div class="avatar-ring"></div>
+                <img id="avatar-img" src="https://api.dicebear.com/7.x/bottts/svg?seed=Henry" alt="Avatar">
+            </div>
+            <div class="profile-info">
+                <h2 id="user-name">Henry</h2>
+                <span id="user-title" class="title-tag">Iniciante</span>
+            </div>
+            <div class="stats-top">
+                <div class="coin-badge">
+                    <i class="fa-solid fa-coins animated-coin"></i>
+                    <span id="coin-count">0</span>
+                </div>
+                <div class="streak-badge">
+                    <i class="fa-solid fa-fire animate-fire"></i>
+                    <span id="streak-count">1</span> Dias
+                </div>
+            </div>
+        </header>
+
+        <section class="status-card">
+            <div class="level-badge">
+                <span>NÍVEL</span>
+                <h1 id="user-level">1</h1>
+            </div>
+            <div class="xp-container">
+                <div class="xp-text">
+                    <span>XP: <strong id="current-xp">0</strong> / <strong id="next-level-xp">100</strong></span>
+                </div>
+                <div class="xp-bar-bg">
+                    <div id="xp-bar-fill" class="xp-bar-fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="app-nav">
+            <button class="nav-btn active" onclick="mudarAba('treinos')">
+                <i class="fa-solid fa-sitemap"></i><span>Jornada</span>
+            </button>
+            <button class="nav-btn" onclick="mudarAba('missoes')">
+                <i class="fa-solid fa-calendar-check"></i><span>Missões</span>
+            </button>
+            <button class="nav-btn" onclick="mudarAba('conquistas')">
+                <i class="fa-solid fa-trophy"></i><span>Conquistas</span>
+            </button>
+            <button class="nav-btn" onclick="mudarAba('loja')">
+                <i class="fa-solid fa-shop"></i><span>Loja</span>
+            </button>
+        </nav>
+
+        <main class="main-content">
+
+            <section id="aba-treinos" class="tab-content">
+                <div class="tree-container" id="tree-exercicios">
+                    </div>
+            </section>
+
+            <section id="aba-missoes" class="tab-content hidden">
+                <div class="section-title">
+                    <h3><i class="fa-solid fa-bolt text-neon"></i> Missões Diárias</h3>
+                </div>
+                <div class="missions-list" id="lista-missoes-diarias">
+                    </div>
+
+                <div class="section-title" style="margin-top: 20px;">
+                    <h3><i class="fa-solid fa-star text-blue"></i> Missões Semanais</h3>
+                </div>
+                <div class="missions-list" id="lista-missoes-semanais">
+                    </div>
+            </section>
+
+            <section id="aba-conquistas" class="tab-content hidden">
+                <div class="section-title">
+                    <h3><i class="fa-solid fa-award"></i> Suas Conquistas</h3>
+                </div>
+                <div class="achievements-grid" id="lista-conquistas">
+                    </div>
+            </section>
+
+            <section id="aba-loja" class="tab-content hidden">
+                <div class="section-title">
+                    <h3><i class="fa-solid fa-store"></i> Mercado Nexus</h3>
+                    <p class="subtitle">Use suas moedas de treino para comprar itens cosméticos!</p>
+                </div>
+                <div class="shop-grid" id="lista-loja">
+                    </div>
+            </section>
+
+        </main>
+
+        <footer class="app-footer">
+            <div class="reminder-settings">
+                <label for="reminder-time"><i class="fa-solid fa-bell"></i> Lembrete:</label>
+                <input type="time" id="reminder-time" value="18:00" onchange="configurarLembrete()">
+            </div>
+            <button onclick="resetarProgresso()" class="btn-reset-link">
+                <i class="fa-solid fa-arrow-rotate-left"></i> Resetar Conta
+            </button>
+        </footer>
+
+        <div id="level-up-modal" class="modal hidden">
+            <div class="modal-content">
+                <i class="fa-solid fa-crown level-up-icon"></i>
+                <h2>SUBIU DE NÍVEL!</h2>
+                <p>Sua força aumentou! Você alcançou o Nível <span id="modal-level">2</span></p>
+                <div id="modal-title-change" class="modal-title-alert"></div>
+                <button onclick="fecharModal()" class="btn-modal">Continuar Evoluindo</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

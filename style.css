@@ -1,0 +1,568 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS & PALETA DE CORES
+   ========================================================================== */
+:root {
+    --bg-color: #0b0b0b;
+    --card-color: #161616;
+    --item-color: #222222;
+    --neon-green: #00FF88;
+    --neon-blue: #00BFFF;
+    --white: #FFFFFF;
+    --gray: #888888;
+    --dark-gray: #2d2d2d;
+    --gold: #FFD700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* CONTAINER PRINCIPAL (ESTILO MOBILE FIRST) */
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--card-color);
+    border-radius: 28px;
+    padding: 16px;
+    border: 2px solid #222;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+.text-neon { color: var(--neon-green); }
+.text-blue { color: var(--neon-blue); }
+
+/* ==========================================================================
+   HEADER DO PERFIL & STATUS
+   ========================================================================== */
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 12px 16px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    gap: 12px;
+}
+
+.avatar-container {
+    position: relative;
+    width: 55px;
+    height: 55px;
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #2a2a2a;
+    position: relative;
+    z-index: 2;
+}
+
+.avatar-ring {
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    border: 2px dashed var(--neon-green);
+    border-radius: 50%;
+    animation: rotate 12s linear infinite;
+    z-index: 1;
+}
+
+.profile-info h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.title-tag {
+    font-size: 0.75rem;
+    color: var(--neon-blue);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-top {
+    position: absolute;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.streak-badge, .coin-badge {
+    background: #2a2a2a;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.animate-fire { color: #FF5722; animation: pulse 1s infinite alternate; }
+.animated-coin { color: var(--gold); }
+
+/* CARD DE STATUS E PROGRESSO */
+.status-card {
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--neon-green);
+}
+
+.level-badge {
+    text-align: center;
+    background: #2a2a2a;
+    padding: 8px;
+    border-radius: 14px;
+    min-width: 65px;
+}
+
+.level-badge span {
+    font-size: 0.65rem;
+    color: var(--gray);
+    display: block;
+    font-weight: 700;
+}
+
+.level-badge h1 {
+    color: var(--neon-green);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.xp-container { flex-grow: 1; }
+
+.xp-text {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: #eee;
+    font-weight: 600;
+}
+
+.xp-bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: #333;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.xp-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   SISTEMA DE ABAS (NAV BAR)
+   ========================================================================== */
+.app-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    padding: 6px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #252525;
+}
+
+.nav-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--gray);
+    padding: 10px 4px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.nav-btn i { font-size: 1.1rem; }
+
+.nav-btn.active {
+    color: var(--neon-green);
+    background-color: #252525;
+}
+
+/* ==========================================================================
+   CONTEÚDO DAS ABAS
+   ========================================================================== */
+.main-content {
+    min-height: 380px;
+}
+
+.section-title h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title .subtitle {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 15px;
+}
+
+.hidden { display: none !important; }
+
+/* ABA 1: ÁRVORE DE EVOLUÇÃO (ESTILO DUOLINGO / RPG) */
+.tree-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 10px 0;
+}
+
+.category-node {
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    padding: 14px;
+    border: 1px solid #2d2d2d;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.category-header h4 {
+    font-size: 1rem;
+    color: var(--white);
+}
+
+.category-header .node-lvl {
+    font-size: 0.75rem;
+    background-color: var(--dark-gray);
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: var(--neon-blue);
+    font-weight: 700;
+}
+
+.exercise-btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.exercise-node-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--item-color);
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.exercise-node-btn:not(:disabled):hover {
+    border-color: var(--neon-green);
+    background-color: #282828;
+}
+
+.exercise-node-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #161616;
+}
+
+.exercise-node-btn .xp-reward {
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    background: rgba(0, 255, 136, 0.1);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+/* ABA 2: MISSÕES */
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.mission-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2d2d2d;
+}
+
+.mission-card.completed {
+    border-color: rgba(0, 255, 136, 0.3);
+    background-color: #17241d;
+}
+
+.mission-info p {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.mission-info span {
+    font-size: 0.75rem;
+    color: var(--neon-green);
+}
+
+.btn-claim {
+    padding: 6px 12px;
+    background-color: var(--neon-green);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-claim:disabled {
+    background-color: var(--dark-gray);
+    color: var(--gray);
+    cursor: not-allowed;
+}
+
+/* ABA 3: CONQUISTAS */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.achievement-card {
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.achievement-card.unlocked {
+    opacity: 1;
+    border-color: var(--gold);
+    background: linear-gradient(180deg, #1e1e1e 0%, #292518 100%);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+}
+
+.achievement-card i {
+    font-size: 1.8rem;
+    color: var(--gray);
+}
+
+.achievement-card.unlocked i {
+    color: var(--gold);
+    animation: pulse 1.5s infinite alternate;
+}
+
+.achievement-card h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.achievement-card p {
+    font-size: 0.7rem;
+    color: var(--gray);
+}
+
+/* ABA 4: LOJA */
+.shop-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shop-card {
+    background-color: #1e1e1e;
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2d2d2d;
+}
+
+.shop-item-info h4 {
+    font-size: 0.9rem;
+}
+
+.shop-item-info p {
+    font-size: 0.75rem;
+    color: var(--gray);
+}
+
+.btn-buy {
+    padding: 8px 14px;
+    background-color: var(--neon-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-buy:disabled {
+    background-color: var(--dark-gray);
+    color: var(--gray);
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   FOOTER & LEMBRETES
+   ========================================================================== */
+.app-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reminder-settings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.reminder-settings input {
+    background-color: #222;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 4px 6px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.btn-reset-link {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   MODAIS E ANIMAÇÕES
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+    max-width: 340px;
+    width: 85%;
+}
+
+.level-up-icon {
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    animation: bounce 0.8s infinite alternate;
+}
+
+.modal h2 {
+    font-size: 1.5rem;
+    color: var(--neon-green);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.modal-title-alert {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--neon-blue);
+    font-weight: 700;
+}
+
+.btn-modal {
+    margin-top: 18px;
+    padding: 10px 24px;
+    background-color: var(--neon-green);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* ANIMAÇÕES KEYFRAMES */
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-8px); } }
